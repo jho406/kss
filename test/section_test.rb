@@ -12,6 +12,8 @@ Your standard form button.
 :disabled - Dims the button when disabled.
 .primary  - Indicates button is the primary action.
 .smaller  - A smaller button
+            for when the action
+            needs less emphasis.
 
 Styleguide 2.1.1.
 comment
@@ -37,6 +39,10 @@ comment
 
   test "parses the styleguide reference" do
     assert_equal '2.1.1', @section.section
+  end
+
+  test "parses a modifier's multiline description" do
+    assert_equal 'A smaller button for when the action needs less emphasis.', @section.modifiers.last.description
   end
 
   test "parses word phrases as styleguide references" do

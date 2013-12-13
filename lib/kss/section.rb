@@ -63,14 +63,13 @@ module Kss
         next if line.strip.empty?
         indent = line.scan(/^\s*/)[0].to_s.size
 
-        if last_indent && indent > last_indent
+        if last_indent && indent >= last_indent
           modifiers.last.description += line.squeeze(" ")
         else
           modifier, desc = line.split(" - ")
           modifiers << Modifier.new(modifier.strip, desc.strip) if modifier && desc
+          last_indent = indent + 1
         end
-
-        last_indent = indent
       end
 
       modifiers
